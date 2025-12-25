@@ -23,30 +23,32 @@ export default function CustomerPortal() {
   }, []);
 
   // Poll status every 10 seconds
-  usePolling(async () => {
-    try {
+  usePolling(
+    async () => {
       const statusData = await publicAPI.getStatus();
-      setStatus(statusData);
-    } catch (error) {
-      console.error('Error polling status:', error);
-    }
-  }, 10000, true);
+      if (statusData) {
+        setStatus(statusData);
+      }
+    },
+    10000,
+    statusReady
+  );
+
 
   const loadData = async () => {
     try {
       setLoading(true);
       setError(null);
-      
-      const [statusData, menuData] = await Promise.all([
-        publicAPI.getStatus(),
-        publicAPI.getMenu(),
-      ]);
-      
-      setStatus(statusData);
+
+      const menuData = await publicAPI.getMenu();
       setMenu(menuData);
+
+      const statusData = await publicAPI.getStatus();
+      setStatus(statusData);
+      setStatusReady(true); // IMPORTANT
     } catch (error) {
       console.error('Error loading data:', error);
-      setError(error.message || 'Failed to load data');
+      setError('Failed to load data');
     } finally {
       setLoading(false);
     }
