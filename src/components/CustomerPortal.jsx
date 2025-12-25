@@ -15,6 +15,7 @@ export default function CustomerPortal() {
   const [showPayment, setShowPayment] = useState(false);
   const [customerName, setCustomerName] = useState('');
   const [customerPhone, setCustomerPhone] = useState('');
+  const [statusReady, setStatusReady] = useState(false);
   const { cart, getTotalItems, clearCart } = useCart();
 
   // Fetch status and menu on load
