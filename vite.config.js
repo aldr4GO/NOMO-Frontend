@@ -28,6 +28,7 @@ export default defineConfig({
     proxy: {
       '/api': {
         // 3. Use an environment variable for the production API URL
+        // target: process.env.VITE_API_URL || 'http://localhost:5000',
         target: process.env.VITE_API_URL || 'http://localhost:5000',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')

@@ -44,6 +44,8 @@ export default function CustomerPortal() {
 
       console.log("const menuData")
       const menuData = await publicAPI.getMenu();
+      console.log("menuData obtained successfully!!")
+      console.log("setMenu")
       setMenu(menuData);
       
       console.log("const statusData")
