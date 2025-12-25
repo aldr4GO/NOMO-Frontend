@@ -38,12 +38,15 @@ export default function CustomerPortal() {
 
   const loadData = async () => {
     try {
+      console.log("setLoading")
       setLoading(true);
       setError(null);
 
+      console.log("const menuData")
       const menuData = await publicAPI.getMenu();
       setMenu(menuData);
-
+      
+      console.log("const statusData")
       const statusData = await publicAPI.getStatus();
       setStatus(statusData);
       setStatusReady(true); // IMPORTANT
