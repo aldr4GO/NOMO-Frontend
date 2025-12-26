@@ -25,6 +25,7 @@ export default defineConfig({
     port: process.env.PORT || 5173,
     // 2. IMPORTANT: Bind to 0.0.0.0 so the platform can access it
     host: '0.0.0.0',
+    allowedHosts: ["nomo-frontend.onrender.com"],
     proxy: {
       '/api': {
         // 3. Use an environment variable for the production API URL

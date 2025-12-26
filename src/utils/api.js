@@ -9,6 +9,7 @@ async function apiRequest(endpoint, options = {}) {
   const config = {
     headers: {
       'Content-Type': 'application/json',
+      'access-control-allow-origin' : 'https://nomo-frontend.vercel.app',
       ...options.headers,
     },
     credentials: 'include', // Include cookies for session
